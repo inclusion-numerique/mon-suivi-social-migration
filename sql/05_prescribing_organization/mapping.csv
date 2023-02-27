@@ -1,0 +1,7 @@
+organismes_prescripteurs,prescribing_organization
+date_created,created
+gen_random_uuid(),id
+id,legacy_id
+name,name
+organisation,structure_id
+user_created,created_by_id

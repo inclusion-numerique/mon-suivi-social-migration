@@ -1,0 +1,7 @@
+comments,comment
+content,content
+date_created,created
+help_request,help_request_id
+id,source_id
+interview,followup_id
+user_created,created_by_id

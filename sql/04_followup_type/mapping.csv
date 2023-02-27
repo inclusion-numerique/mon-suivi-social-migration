@@ -1,0 +1,9 @@
+follow_up_types_temp,followup_type
+date_created,created
+gen_random_uuid(),id
+ft_id,legacy_id
+"name","name"
+legally_required,legally_required
+user_created,created_by_id
+organisation_id,owned_by_structured_id
+"default","legacy_default"

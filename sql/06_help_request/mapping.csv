@@ -1,0 +1,30 @@
+help_requests,help_request
+allocated_amount,allocated_amount
+asked_amount,asked_amount
+beneficiary,beneficiary_id
+date_created,created
+date_updated,updated
+decision_date,decision_date
+dispatch_date,dispatch_date
+examining_organisation,examining_organisation
+type_id,type_id
+handling_date,handling_date
+id,id
+payment_date,payment_date
+refusal_reason,refusal_reason
+CAST(status_enum AS "HelpRequestStatus"),status
+synthesis,synthesis
+user_created,created_by_id
+examination_date,examination_date
+external_organisation,external_structure
+financial_support,financial_support
+opening_date,opening_date
+CAST(payment_method_enum AS "PaymentMethod"),payment_method
+due_date,due_date
+full_file,full_file
+CAST(reason_enum AS "HelpRequestReason"),reason
+ministre,ministre
+numero_pegase,numero_pegase
+private_synthesis,private_synthesis
+structure_id,structure_id
+prescribing_organization_id,prescribing_organization_id

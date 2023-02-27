@@ -1,0 +1,14 @@
+organisation,structure
+address,address
+city,city
+date_created,created
+date_updated,updated
+email,email
+id,id
+name,name
+phone,phone
+CAST(type_enum AS "StructureType"),type
+zip_code,zipcode
+inhabitants_number,inhabitants_number
+insee_code,insee_code
+siret,siret

@@ -1,0 +1,69 @@
+beneficiary,beneficiary
+accommodation_additional_information,accomodation_additional_information
+CAST(accommodation_mode_enum AS "BeneficiaryAccomodationMode"),accomodation_mode
+accommodation_name,accomodation_name
+additional_information,additional_information
+address_complement,address_complement
+administration,administration
+aidant_connect_authorisation,aidant_connect_authorized
+bank,bank
+birth_name,birth_name
+birth_place,birth_place
+birthdate,birth_date
+caf,caf_number
+caregiver,caregiver
+city,city
+date_created,created
+date_updated,updated
+deathdate,death_date
+doctor,doctor
+email,email
+employer,employer
+employer_siret,employer_siret
+CAST(family_situation_enum AS "BeneficiaryFamilySituation"),family_situation
+file_number,file_number
+firstname,first_name
+funeral_contract,funeral_contract
+CAST(gender_enum AS "Gender"),gender
+CAST(gir_enum AS "BeneficiaryGir"),gir
+health_additional_information,health_additional_information
+id,id
+insurance,insurance
+involved_partners,involved_partners
+main_income_amount,main_income_amount
+ARRAY(SELECT CAST(json_array_elements_text(main_income_type_enum) AS "IncomeSource")),main_income_source
+major_children,major_children
+major_children_main_income_amount,major_children_main_income_amount
+ARRAY(SELECT CAST(json_array_elements_text(major_children_main_income_type_enum) AS "IncomeSource")),major_children_main_income_source
+minister,minister
+minor_children,minor_children
+CAST(mobility_enum AS "BeneficiaryMobility"),mobility
+nationality,nationality
+no_phone,no_phone
+occupation,occupation
+orientation_organisation,orientation_structure
+CAST(orientation_type_enum AS "BeneficiaryOrientationType"),orientation_type
+partner_main_income_amount,partner_main_income_amount
+ARRAY(SELECT CAST(json_array_elements_text(partner_main_income_type_enum) AS "IncomeSource")),partner_main_income_source
+ARRAY(SELECT json_array_elements_text(pension_organisations)),pension_organisations
+phone_1,phone1
+phone_2,phone2
+pole_emploi,unemployment_number
+prescribing_organisation,prescribing_structure
+CAST(protection_measure_enum AS "BeneficiaryProtectionMeasure"),protection_measure
+region,region
+representative,representative
+service_providers,service_providers
+social_security_number,social_security_number
+CAST(socio_professional_category_enum AS "BeneficiarySocioProfessionalCategory"),socio_professional_category
+CAST(status_enum AS "BeneficiaryStatus"),status
+street,street
+street_number,street_number
+CAST(title_enum AS "BeneficiaryTitle"),title
+user_created,created_by_id
+usual_name,usual_name
+zip_code,zipcode
+ministere_categorie,ministere_categorie
+ministere_departement_service_ac,ministere_departement_service_ac
+ministere_structure,ministere_structure
+structure_id,structure_id

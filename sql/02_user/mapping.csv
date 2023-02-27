@@ -1,0 +1,14 @@
+directus_users,user
+aidant_connect_authorisation,aidant_connect_authorisation
+description,description
+email,email
+first_name,first_name
+id,id
+last_access,last_access
+last_name,last_name
+location,location
+organisation,structure_id
+password,password
+CAST(status_enum AS "UserStatus"),status
+title,title
+CAST(role_enum AS "UserRole"),role
