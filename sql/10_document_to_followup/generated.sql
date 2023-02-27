@@ -1,0 +1,1 @@
+INSERT INTO "public"."_document_to_followup" ("A", "B") SELECT directus_file, follow_up FROM "directus"."follow_ups_directus_files";

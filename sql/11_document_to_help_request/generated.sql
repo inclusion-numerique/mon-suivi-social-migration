@@ -1,0 +1,1 @@
+INSERT INTO "public"."_document_to_help_request" ("A", "B") SELECT directus_file, help_request FROM "directus"."help_requests_directus_files";

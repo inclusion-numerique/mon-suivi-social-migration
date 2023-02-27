@@ -1,0 +1,1 @@
+INSERT INTO "public"."_beneficiary_referents" ("A", "B") SELECT beneficiary, referent FROM "directus"."beneficiary_referents";

@@ -1,0 +1,6 @@
+notifications,notification
+date_created,created
+id,id
+read,read
+recipient,recipient_id
+Cast(type_enum as "NotificationType"),type

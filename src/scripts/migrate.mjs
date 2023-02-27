@@ -16,6 +16,11 @@ export async function migrate() {
     await migrateFile("06_help_request");
     await migrateFile("07_follow_up");
     await migrateFile("08_comment");
+    await migrateFile("09_document");
+    await migrateFile("10_document_to_followup");
+    await migrateFile("11_document_to_help_request");
+    await migrateFile("12_beneficiary_referents");
+    await migrateFile("13_notification");
 }
 
 async function migrateFile(path) {

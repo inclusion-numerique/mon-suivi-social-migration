@@ -4,6 +4,6 @@ import { prepare } from "./src/scripts/prepare.mjs";
 import { restore } from "./src/scripts/restore.mjs";
 
 // await dump();
-// await prepare();
-// await restore();
+await prepare();
+await restore();
 await migrate();

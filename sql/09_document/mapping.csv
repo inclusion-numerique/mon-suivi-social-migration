@@ -1,0 +1,10 @@
+directus_files,document
+beneficiary,beneficiary_id
+confidential,confidential
+CAST(document_type_enum AS "DocumentType"),type
+filename_download,name
+filesize,size
+id::text,key
+type,mime_type
+uploaded_by,created_by_id
+uploaded_on,created

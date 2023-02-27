@@ -1,0 +1,1 @@
+INSERT INTO "public"."document" (beneficiary_id, confidential, type, name, size, key, mime_type, created_by_id, created) SELECT beneficiary, confidential, CAST(document_type_enum AS "DocumentType"), filename_download, filesize, id::text, type, uploaded_by, uploaded_on FROM "directus"."directus_files";
