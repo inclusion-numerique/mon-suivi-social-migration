@@ -1,8 +1,9 @@
-alter table "directus"."follow_up_types" add legally_required Boolean NULL;
+alter table "directus"."follow_up_types" add COLUMN IF NOT EXISTS legally_required Boolean NULL;
 update "directus"."follow_up_types" set legally_required = true where "type" = 'legal';
 update "directus"."follow_up_types" set legally_required = true where "type" = 'optional';
 update "directus"."follow_up_types" set date_created = now() where date_created is null;
 
+DROP TABLE IF EXISTS "directus"."follow_up_types_temp";
 CREATE TABLE "directus"."follow_up_types_temp" AS (
     SELECT ft.date_created date_created
             , ft.id ft_id
