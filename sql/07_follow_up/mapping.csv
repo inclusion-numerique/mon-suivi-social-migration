@@ -1,0 +1,26 @@
+follow_ups,followup
+beneficiary,beneficiary_id
+classified,classified
+date,date
+date_created,created
+date_updated,updated
+due_date,due_date
+first_follow_up,first_followup
+forwarded_to_justice,forwarded_to_justice
+help_request,help_requested
+id,id
+ARRAY(SELECT CAST(json_array_elements_text(interventions_enum) AS "FollowupIntervention")),interventions
+ministre,ministre
+numero_pegase,numero_pegase
+place,place
+redirected,redirected
+ARRAY(SELECT CAST(json_array_elements_text(signalements_enum) AS "FollowupSignalement")),signalements
+CAST(status_enum AS "FollowupStatus"),status
+synthesis,synthesis
+third_person_name,third_person_name
+CAST(medium_enum AS "FollowupMedium"),medium
+user_created,created_by_id
+private_synthesis,private_synthesis
+prescribing_organization_id,prescribing_organization_id
+organisation_name,structure_name
+structure_id,structure_id

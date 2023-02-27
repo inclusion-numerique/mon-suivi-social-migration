@@ -1,15 +1,6 @@
 import fs from "fs";
 
-export function generateSqlMigrationFiles() {
-    generateSQLFile("01_structure")
-    generateSQLFile("02_user")
-    generateSQLFile("03_beneficiary")
-    generateSQLFile("04_followup_type")
-    generateSQLFile("05_prescribing_organization")
-    generateSQLFile("06_help_request")
-}
-
-function generateSQLFile(path) {
+export function generateMigration(path) {
     console.log(`Generate migration file ${path}`)
     const data = fs.readFileSync(`./sql/${path}/mapping.csv`, 'utf8');
     const lines = data.split("\n");

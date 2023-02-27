@@ -1,0 +1,1 @@
+INSERT INTO "public"."comment" (content, created, help_request_id, id, followup_id, created_by_id) SELECT content, date_created, help_request, id, interview, user_created FROM "directus"."comments";
