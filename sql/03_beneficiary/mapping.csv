@@ -4,7 +4,6 @@ CAST(accommodation_mode_enum AS "BeneficiaryAccomodationMode"),accomodation_mode
 accommodation_name,accomodation_name
 additional_information,additional_information
 address_complement,address_complement
-administration,administration
 aidant_connect_authorisation,aidant_connect_authorized
 bank,bank
 birth_name,birth_name
@@ -35,10 +34,9 @@ ARRAY(SELECT CAST(json_array_elements_text(main_income_type_enum) AS "IncomeSour
 major_children,major_children
 major_children_main_income_amount,major_children_main_income_amount
 ARRAY(SELECT CAST(json_array_elements_text(major_children_main_income_type_enum) AS "IncomeSource")),major_children_main_income_source
-minister,minister
 minor_children,minor_children
 CAST(mobility_enum AS "BeneficiaryMobility"),mobility
-nationality,nationality
+CAST(nationality AS "Nationality"),nationality
 no_phone,no_phone
 occupation,occupation
 orientation_organisation,orientation_structure
