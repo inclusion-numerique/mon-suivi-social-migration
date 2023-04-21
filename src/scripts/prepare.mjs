@@ -15,7 +15,7 @@ const databaseUrlDest = buildDatabaseUrl(
   process.env.DATABASE_DEST_PORT
 );
 const databaseUrlDestDirectusDb = `${databaseUrlDest}/directus`;
-const databaseUrlDestMonsuivisocialDb = `${databaseUrlDest}/monsuivisocial`;
+const databaseUrlDestMonsuivisocialDb = `${databaseUrlDest}/${process.env.DATABASE_DEST_DBNAME}`;
 
 export async function prepare() {
   await execPsql(

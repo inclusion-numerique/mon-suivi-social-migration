@@ -9,7 +9,7 @@ const databaseUrlDestMonsuivisocialDb = buildDatabaseUrl(
   process.env.DATABASE_DEST_PASSWORD,
   process.env.DATABASE_DEST_HOST,
   process.env.DATABASE_DEST_PORT,
-  'monsuivisocial'
+  process.env.DATABASE_DEST_DBNAME
 );
 
 export async function migrate() {
