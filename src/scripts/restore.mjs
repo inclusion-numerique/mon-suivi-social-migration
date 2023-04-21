@@ -1,13 +1,29 @@
-
 import dotenv from 'dotenv';
-import { restoreDatabase, execPsql } from '../help/commands.mjs';
+import {
+  buildDatabaseUrl,
+  execPsql,
+  restoreDatabase
+} from '../help/commands.mjs';
 
 dotenv.config();
 
-const DATABASE_URL_LOCAL = process.env.DATABASE_URL_LOCAL;
+const databaseUrlDestMonsuivisocialDb = buildDatabaseUrl(
+  process.env.DATABASE_DEST_USER,
+  process.env.DATABASE_DEST_PASSWORD,
+  process.env.DATABASE_DEST_HOST,
+  process.env.DATABASE_DEST_PORT,
+  process.env.DATABASE_DEST_DBNAME
+);
 
 export async function restore() {
-    await execPsql(DATABASE_URL_LOCAL + "/mss", "DROP SCHEMA IF EXISTS directus CASCADE");
-    await execPsql(DATABASE_URL_LOCAL + "/mss", "CREATE SCHEMA directus");
-    await restoreDatabase("./dumps/directus.dump", DATABASE_URL_LOCAL + "/mss", "directus");
+  await execPsql(
+    databaseUrlDestMonsuivisocialDb,
+    'DROP SCHEMA IF EXISTS directus CASCADE'
+  );
+  await execPsql(databaseUrlDestMonsuivisocialDb, 'CREATE SCHEMA directus');
+  await restoreDatabase(
+    './dumps/directus.dump',
+    databaseUrlDestMonsuivisocialDb,
+    'directus'
+  );
 }

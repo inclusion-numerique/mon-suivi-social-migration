@@ -1,11 +1,16 @@
-
 import dotenv from 'dotenv';
-import { dumpDatabase } from '../help/commands.mjs';
+import { buildDatabaseUrl, dumpDatabase } from '../help/commands.mjs';
 
 dotenv.config();
 
-const DATABASE_URL_DIST = process.env.DATABASE_URL_DIST;
+const databaseUrlOrigin = buildDatabaseUrl(
+  process.env.DATABASE_ORIGIN_USER,
+  process.env.DATABASE_ORIGIN_PASSWORD,
+  process.env.DATABASE_ORIGIN_HOST,
+  process.env.DATABASE_ORIGIN_PORT,
+  process.env.DATABASE_ORIGIN_DBNAME
+);
 
 export async function dump() {
-    await dumpDatabase(DATABASE_URL_DIST, "public", "./dumps/dist.dump");
+  await dumpDatabase(databaseUrlOrigin, 'public', './dumps/dist.dump');
 }

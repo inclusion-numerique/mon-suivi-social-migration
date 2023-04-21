@@ -18,16 +18,20 @@ export async function execSqlFile(databaseUrl, sqlFile) {
 export async function restoreDatabase(dumpFilePath, databaseUrl, schema) {
   const command = `pg_restore -d "${databaseUrl}" -e -Fc --no-owner -n ${schema} ${dumpFilePath}`;
   return execCommand(command);
+}
 
+export function buildDatabaseUrl(user, password, host, port, dbname) {
+  const urlWithoutDbname = `postgresql://${user}:${password}@${host}:${port}`;
+  if (dbname) return `${urlWithoutDbname}/${dbname}`;
+  return urlWithoutDbname;
 }
 
 async function execCommand(command) {
   console.log(command);
   try {
-    return subProcess.execSync(command)
+    return subProcess.execSync(command);
   } catch (err) {
-    console.error(err)
-    process.exit(1)
+    console.error(err);
+    process.exit(1);
   }
 }
-

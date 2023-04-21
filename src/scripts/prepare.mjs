@@ -1,18 +1,46 @@
-
 import dotenv from 'dotenv';
-import { dumpDatabase, restoreDatabase, execPsql } from '../help/commands.mjs';
+import {
+  buildDatabaseUrl,
+  dumpDatabase,
+  execPsql,
+  restoreDatabase
+} from '../help/commands.mjs';
 
 dotenv.config();
 
-const DATABASE_URL_LOCAL = process.env.DATABASE_URL_LOCAL;
+const databaseUrlDest = buildDatabaseUrl(
+  process.env.DATABASE_DEST_USER,
+  process.env.DATABASE_DEST_PASSWORD,
+  process.env.DATABASE_DEST_HOST,
+  process.env.DATABASE_DEST_PORT
+);
+const databaseUrlDestDirectusDb = `${databaseUrlDest}/directus`;
+const databaseUrlDestMonsuivisocialDb = `${databaseUrlDest}/${process.env.DATABASE_DEST_DBNAME}`;
 
 export async function prepare() {
-    await execPsql(DATABASE_URL_LOCAL, "DROP DATABASE IF EXISTS directus");
-    await execPsql(DATABASE_URL_LOCAL, "CREATE DATABASE directus");
-    await restoreDatabase("./dumps/dist.dump", DATABASE_URL_LOCAL + "/directus", "public");
-    await execPsql(DATABASE_URL_LOCAL + "/directus", "ALTER schema public rename to directus");
-    await dumpDatabase(DATABASE_URL_LOCAL + "/directus", "directus", "./dumps/directus.dump");
+  await execPsql(
+    databaseUrlDestMonsuivisocialDb,
+    'DROP DATABASE IF EXISTS directus'
+  );
+  await execPsql(databaseUrlDestMonsuivisocialDb, 'CREATE DATABASE directus');
+  await restoreDatabase(
+    './dumps/dist.dump',
+    databaseUrlDestDirectusDb,
+    'public'
+  );
+  await execPsql(
+    databaseUrlDestDirectusDb,
+    'ALTER schema public rename to directus'
+  );
+  await dumpDatabase(
+    databaseUrlDestDirectusDb,
+    'directus',
+    './dumps/directus.dump'
+  );
 
-    await execPsql(DATABASE_URL_LOCAL + "/mss", "DROP EXTENSION IF EXISTS pgcrypto");
-    await execPsql(DATABASE_URL_LOCAL + "/mss", "CREATE EXTENSION pgcrypto");
+  await execPsql(
+    databaseUrlDestMonsuivisocialDb,
+    'DROP EXTENSION IF EXISTS pgcrypto'
+  );
+  await execPsql(databaseUrlDestMonsuivisocialDb, 'CREATE EXTENSION pgcrypto');
 }
