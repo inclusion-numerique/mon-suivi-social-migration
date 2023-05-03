@@ -13,7 +13,7 @@ alter table directus.follow_ups add column if not exists medium_enum text null;
  update directus.follow_ups set medium_enum = 'Videoconference' where "type" = 'videoconference';
  update directus.follow_ups set medium_enum = 'ExternalAppointment' where "type" = 'outside';
  update directus.follow_ups set medium_enum = 'BeneficiaryHouseAppointment' where "type" = 'home';
- 
+
 alter table directus.follow_ups add column if not exists interventions_enum json null;
 update directus.follow_ups set interventions_enum = interventions;
 update "directus"."follow_ups" set interventions_enum = json(replace(interventions_enum::text, 'deets_siao', 'DeetsSiao'));
@@ -39,17 +39,23 @@ alter table "directus"."follow_ups" add column if not exists prescribing_organiz
 update "directus"."follow_ups" fu set prescribing_organization_id = (
     select po.id
         FROM public.prescribing_organization po
-        where po.legacy_id = fu.organisme_prescripteur 
+        where po.legacy_id = fu.organisme_prescripteur
 );
 
 alter table "directus"."follow_ups" add column if not exists structure_id uuid null;
 update "directus"."follow_ups" fu set structure_id = (
     select u.organisation
         FROM directus.beneficiary b, directus.beneficiary_referents br, directus.directus_users u
-        where fu.beneficiary = b.id AND b.id = br.beneficiary AND br.referent = u.id 
+        where fu.beneficiary = b.id AND b.id = br.beneficiary AND br.referent = u.id
         LIMIT 1
 );
- 
- 
+
+ALTER TABLE "directus"."follow_ups" ADD column if not exists ministre_enum text NULL;
+update "directus"."follow_ups" set "ministre_enum" = 'FrancoisBraun' where "ministre" = 'braun';
+update "directus"."follow_ups" set "ministre_enum" = 'AgnesFirminLeBodo' where "ministre" = 'firmin_le_bodo';
+update "directus"."follow_ups" set "ministre_enum" = 'JeanChristopheCombe' where "ministre" = 'combe';
+update "directus"."follow_ups" set "ministre_enum" = 'GenevieveDarrieussecq' where "ministre" = 'darrieussecq';
+update "directus"."follow_ups" set "ministre_enum" = 'OlivierDussopt' where "ministre" = 'dussopt';
+update "directus"."follow_ups" set "ministre_enum" = 'CaroleGrandjean' where "ministre" = 'grandjean';
 
 

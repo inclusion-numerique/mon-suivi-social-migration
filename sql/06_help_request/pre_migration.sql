@@ -9,7 +9,7 @@ alter table "directus"."help_requests" add column if not exists structure_id uui
 update "directus"."help_requests" hr set structure_id = (
     select u.organisation
         FROM directus.beneficiary b, directus.beneficiary_referents br, directus.directus_users u
-        where hr.beneficiary = b.id AND b.id = br.beneficiary AND br.referent = u.id 
+        where hr.beneficiary = b.id AND b.id = br.beneficiary AND br.referent = u.id
         LIMIT 1
 );
 
@@ -17,7 +17,7 @@ alter table "directus"."help_requests" add column if not exists prescribing_orga
 update "directus"."help_requests" hr set prescribing_organization_id = (
     select po.id
         FROM public.prescribing_organization po
-        where po.legacy_id = organisme_prescripteur 
+        where po.legacy_id = organisme_prescripteur
 );
 
 alter table "directus"."help_requests" add column if not exists type_id uuid null;
@@ -46,6 +46,13 @@ update "directus"."help_requests" set "payment_method_enum" = 'FoodStamps' where
 ALTER TABLE "directus"."help_requests" ADD column if not exists reason_enum text NULL;
 update "directus"."help_requests" set "reason_enum" = 'Energy' where "reason" = 'energy';
 update "directus"."help_requests" set "reason_enum" = 'Food' where "reason" = 'food';
-update "directus"."help_requests" set "reason_enum" = 'Housing' where "reason" ='housing'; 
-update "directus"."help_requests" set "reason_enum" = 'Other' where "reason" ='other'; 
+update "directus"."help_requests" set "reason_enum" = 'Housing' where "reason" ='housing';
+update "directus"."help_requests" set "reason_enum" = 'Other' where "reason" ='other';
 
+ALTER TABLE "directus"."help_requests" ADD column if not exists ministre_enum text NULL;
+update "directus"."help_requests" set "ministre_enum" = 'FrancoisBraun' where "ministre" = 'braun';
+update "directus"."help_requests" set "ministre_enum" = 'AgnesFirminLeBodo' where "ministre" = 'firmin_le_bodo';
+update "directus"."help_requests" set "ministre_enum" = 'JeanChristopheCombe' where "ministre" = 'combe';
+update "directus"."help_requests" set "ministre_enum" = 'GenevieveDarrieussecq' where "ministre" = 'darrieussecq';
+update "directus"."help_requests" set "ministre_enum" = 'OlivierDussopt' where "ministre" = 'dussopt';
+update "directus"."help_requests" set "ministre_enum" = 'CaroleGrandjean' where "ministre" = 'grandjean';

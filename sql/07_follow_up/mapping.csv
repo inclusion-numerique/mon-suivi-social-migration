@@ -10,7 +10,7 @@ forwarded_to_justice,forwarded_to_justice
 help_request,help_requested
 id,id
 ARRAY(SELECT CAST(json_array_elements_text(interventions_enum) AS "FollowupIntervention")),interventions
-ministre,ministre
+CAST(ministre_enum as "Minister"),ministre
 numero_pegase,numero_pegase
 place,place
 redirected,redirected
