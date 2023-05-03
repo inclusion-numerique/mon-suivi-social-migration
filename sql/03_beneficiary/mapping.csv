@@ -65,3 +65,5 @@ ministere_categorie,ministere_categorie
 ministere_departement_service_ac,ministere_departement_service_ac
 ministere_structure,ministere_structure
 structure_id,structure_id
+numero_pegase,numero_pegase
+CAST(accommodation_zone AS "AccomodationZone"),accommodation_zone

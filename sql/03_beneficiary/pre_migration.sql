@@ -135,7 +135,6 @@ update "directus"."beneficiary" set partner_main_income_type_enum = json(replace
 update "directus"."beneficiary" set partner_main_income_type_enum = json(replace(partner_main_income_type_enum::text, 'apl', 'Apl'));
 update "directus"."beneficiary" set partner_main_income_type_enum = json(replace(partner_main_income_type_enum::text, 'other', 'Autre'));
 
-
 ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS "structure_id" uuid NULL;
 update "directus"."beneficiary" b set "structure_id" = (
        SELECT r.organisation
