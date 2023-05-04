@@ -151,3 +151,5 @@ update "directus"."beneficiary" set accommodation_zone_enum = accommodation_zone
 update "directus"."beneficiary" set accommodation_zone_enum = 'France' where accommodation_zone_enum = 'france';
 update "directus"."beneficiary" set accommodation_zone_enum = 'Europe' where accommodation_zone_enum = 'eu';
 update "directus"."beneficiary" set accommodation_zone_enum = 'OutsideEurope' where accommodation_zone_enum = 'outside_eu';
+
+update "directus"."beneficiary" set aidant_connect_authorisation = false where aidant_connect_authorisation is NULL;
