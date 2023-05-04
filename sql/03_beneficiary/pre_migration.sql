@@ -145,4 +145,9 @@ update "directus"."beneficiary" b set "structure_id" = (
     );
 
 
-update "directus"."beneficiary" set aidant_connect_authorisation = false where aidant_connect_authorisation IS NULL;
+ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS accomodation_zone_enum json NULL;
+update "directus"."beneficiary" set accomodation_zone_enum = accomodation_zone;
+
+update "directus"."beneficiary" set accomodation_zone_enum = 'France' where accomodation_zone_enum = 'france';
+update "directus"."beneficiary" set accomodation_zone_enum = 'Europe' where accomodation_zone_enum = 'eu';
+update "directus"."beneficiary" set accomodation_zone_enum = 'OutsideEurope' where accomodation_zone_enum = 'outside_eu';
