@@ -1,6 +1,6 @@
 alter table "directus"."follow_up_types" add COLUMN IF NOT EXISTS legally_required Boolean NULL;
 update "directus"."follow_up_types" set legally_required = true where "type" = 'legal';
-update "directus"."follow_up_types" set legally_required = true where "type" = 'optional';
+update "directus"."follow_up_types" set legally_required = false where "type" = 'optional';
 update "directus"."follow_up_types" set date_created = now() where date_created is null;
 
 alter table "directus"."follow_up_types" add COLUMN IF NOT EXISTS default_legally_required_key text NULL;
@@ -19,17 +19,17 @@ update "directus"."follow_up_types" set default_legally_required_key = 'Puma' wh
 update "directus"."follow_up_types" set default_legally_required_key = 'RevenuDeSolidariteActive' where "default" is true and legally_required is true and name = 'Revenu de solidarité active';
 
 alter table "directus"."follow_up_types" add COLUMN IF NOT EXISTS default_legally_not_required_key text NULL;
-update "directus"."follow_up_types" set default_legally_not_required_key = 'AccompagnementSocial' where "default" is true and legally_required is true and name = 'Accompagnement social';
-update "directus"."follow_up_types" set default_legally_not_required_key = 'AideAlimentaire' where "default" is true and legally_required is true and name = 'Aide alimentaire';
-update "directus"."follow_up_types" set default_legally_not_required_key = 'AideAuTransport' where "default" is true and legally_required is true and name = 'Aide au transport';
-update "directus"."follow_up_types" set default_legally_not_required_key = 'AidesFinancieresNonRemboursables' where "default" is true and legally_required is true and name = 'Aides financières non remboursables';
-update "directus"."follow_up_types" set default_legally_not_required_key = 'AidesFinancieresRemboursables' where "default" is true and legally_required is true and name = 'Aides financières remboursables';
-update "directus"."follow_up_types" set default_legally_not_required_key = 'AnimationsFamilles' where "default" is true and legally_required is true and name = 'Animations familles';
-update "directus"."follow_up_types" set default_legally_not_required_key = 'AnimationsSeniors' where "default" is true and legally_required is true and name = 'Animations seniors';
-update "directus"."follow_up_types" set default_legally_not_required_key = 'InclusionNumerique' where "default" is true and legally_required is true and name = 'Inclusion numérique';
-update "directus"."follow_up_types" set default_legally_not_required_key = 'Other' where "default" is true and legally_required is true and name = 'Autre';
-update "directus"."follow_up_types" set default_legally_not_required_key = 'PlanAlerteEtUrgence' where "default" is true and legally_required is true and name = 'Plan alerte et urgence';
-update "directus"."follow_up_types" set default_legally_not_required_key = 'SoutienAdministratif' where "default" is true and legally_required is true and name = 'Soutien administratif';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'AccompagnementSocial' where "default" is true and legally_required is false and name = 'Accompagnement social';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'AideAlimentaire' where "default" is true and legally_required is false and name = 'Aide alimentaire';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'AideAuTransport' where "default" is true and legally_required is false and name = 'Aide au transport';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'AidesFinancieresNonRemboursables' where "default" is true and legally_required is false and name = 'Aides financières non remboursables';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'AidesFinancieresRemboursables' where "default" is true and legally_required is false and name = 'Aides financières remboursables';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'AnimationsFamilles' where "default" is true and legally_required is false and name = 'Animations familles';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'AnimationsSeniors' where "default" is true and legally_required is false and name = 'Animations seniors';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'InclusionNumerique' where "default" is true and legally_required is false and name = 'Inclusion numérique';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'Other' where "default" is true and legally_required is false and name = 'Autre';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'PlanAlerteEtUrgence' where "default" is true and legally_required is false and name = 'Plan alerte et urgence';
+update "directus"."follow_up_types" set default_legally_not_required_key = 'SoutienAdministratif' where "default" is true and legally_required is false and name = 'Soutien administratif';
 
 DROP TABLE IF EXISTS "directus"."follow_up_types_temp";
 CREATE TABLE "directus"."follow_up_types_temp" AS (
