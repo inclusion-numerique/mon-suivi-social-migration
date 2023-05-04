@@ -23,7 +23,7 @@ CAST(payment_method_enum AS "PaymentMethod"),payment_method
 due_date,due_date
 full_file,full_file
 CAST(reason_enum AS "HelpRequestReason"),reason
-ministre,ministre
+CAST(ministre_enum as "Minister"),ministre
 numero_pegase,numero_pegase
 private_synthesis,private_synthesis
 structure_id,structure_id
