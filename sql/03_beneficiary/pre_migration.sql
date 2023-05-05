@@ -153,3 +153,5 @@ update "directus"."beneficiary" set accommodation_zone_enum = 'Europe' where acc
 update "directus"."beneficiary" set accommodation_zone_enum = 'OutsideEurope' where accommodation_zone_enum = 'outside_eu';
 
 update "directus"."beneficiary" set aidant_connect_authorisation = false where aidant_connect_authorisation is NULL;
+update "directus"."beneficiary" set no_phone = false where no_phone is NULL;
+update "directus"."beneficiary" set caregiver = false where caregiver is NULL;
