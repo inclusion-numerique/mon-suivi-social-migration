@@ -145,9 +145,9 @@ update "directus"."beneficiary" b set "structure_id" = (
     );
 
 
-ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS accomodation_zone_enum json NULL;
-update "directus"."beneficiary" set accomodation_zone_enum = accomodation_zone;
+ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS accommodation_zone_enum json NULL;
+update "directus"."beneficiary" set accommodation_zone_enum = accommodation_zone;
 
-update "directus"."beneficiary" set accomodation_zone_enum = 'France' where accomodation_zone_enum = 'france';
-update "directus"."beneficiary" set accomodation_zone_enum = 'Europe' where accomodation_zone_enum = 'eu';
-update "directus"."beneficiary" set accomodation_zone_enum = 'OutsideEurope' where accomodation_zone_enum = 'outside_eu';
+update "directus"."beneficiary" set accommodation_zone_enum = 'France' where accommodation_zone_enum = 'france';
+update "directus"."beneficiary" set accommodation_zone_enum = 'Europe' where accommodation_zone_enum = 'eu';
+update "directus"."beneficiary" set accommodation_zone_enum = 'OutsideEurope' where accommodation_zone_enum = 'outside_eu';

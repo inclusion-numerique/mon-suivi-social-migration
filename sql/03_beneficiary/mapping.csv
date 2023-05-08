@@ -1,7 +1,7 @@
 beneficiary,beneficiary
-accommodation_additional_information,accomodation_additional_information
-CAST(accommodation_mode_enum AS "BeneficiaryAccomodationMode"),accomodation_mode
-accommodation_name,accomodation_name
+accommodation_additional_information,accommodation_additional_information
+CAST(accommodation_mode_enum AS "BeneficiaryAccommodationMode"),accommodation_mode
+accommodation_name,accommodation_name
 additional_information,additional_information
 address_complement,address_complement
 aidant_connect_authorisation,aidant_connect_authorized
@@ -66,5 +66,5 @@ ministere_departement_service_ac,ministere_departement_service_ac
 ministere_structure,ministere_structure
 structure_id,structure_id
 numero_pegase,numero_pegase
-CAST(accommodation_zone_enum AS "AccomodationZone"),accommodation_zone
+CAST(accommodation_zone_enum AS "AccommodationZone"),accommodation_zone
 other_pension_organisations,other_pension_organisations
