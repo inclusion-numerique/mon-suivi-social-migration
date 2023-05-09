@@ -145,7 +145,7 @@ update "directus"."beneficiary" b set "structure_id" = (
     );
 
 
-ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS accommodation_zone_enum json NULL;
+ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS accommodation_zone_enum text NULL;
 update "directus"."beneficiary" set accommodation_zone_enum = accommodation_zone;
 
 update "directus"."beneficiary" set accommodation_zone_enum = 'France' where accommodation_zone_enum = 'france';
