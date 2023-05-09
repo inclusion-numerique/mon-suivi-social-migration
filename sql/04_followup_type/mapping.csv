@@ -6,6 +6,4 @@ ft_id,legacy_id
 legally_required,legally_required
 user_created,created_by_id
 organisation_id,owned_by_structured_id
-"default","legacy_default"
-CAST(default_legally_required_key AS "DefaultLegallyRequiredFollowupType"),default_legally_required_key
-CAST(default_legally_not_required_key AS "DefaultLegallyNotRequiredFollowupType"),default_legally_not_required_key
+CAST("default" AS "DefaultFollowupType),"default"
