@@ -66,5 +66,5 @@ ministere_departement_service_ac,ministere_departement_service_ac
 ministere_structure,ministere_structure
 structure_id,structure_id
 numero_pegase,numero_pegase
-CAST(accommodation_zone_enum AS "AccommodationZone"),accommodation_zone
+CAST(accommodation_zone_enum AS "BeneficiaryAccomodationZone"),accommodation_zone
 other_pension_organisations,other_pension_organisations
