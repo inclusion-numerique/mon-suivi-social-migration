@@ -4,3 +4,6 @@ id,id
 read,read
 recipient,recipient_id
 Cast(type_enum as "NotificationType"),type
+document_id,document_id
+help_request_id,help_request_id
+followup_id,followup_id

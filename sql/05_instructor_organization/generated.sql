@@ -1,0 +1,1 @@
+INSERT INTO "public"."instructor_organization" (created, id, legacy_id, name, structure_id, created_by_id) SELECT date_created, gen_random_uuid(), id, name, organisation, user_created FROM "directus"."organismes_instructeurs";

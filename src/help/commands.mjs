@@ -21,7 +21,7 @@ export async function restoreDatabase(dumpFilePath, databaseUrl, schema) {
 }
 
 export function buildDatabaseUrl(user, password, host, port, dbname) {
-  const urlWithoutDbname = `postgresql://${user}:${password}@${host}:${port}`;
+  const urlWithoutDbname = `postgresql://${user}:"${password}"@${host}:${port}`;
   if (dbname) return `${urlWithoutDbname}/${dbname}`;
   return urlWithoutDbname;
 }

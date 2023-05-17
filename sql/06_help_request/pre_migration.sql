@@ -20,6 +20,13 @@ update "directus"."help_requests" hr set prescribing_organization_id = (
         where po.legacy_id = organisme_prescripteur
 );
 
+alter table "directus"."help_requests" add column if not exists instructor_organization_id uuid null;
+update "directus"."help_requests" hr set instructor_organization_id = (
+    select po.id
+        FROM public.instructor_organization po
+        where po.legacy_id = organisme_instructeur
+);
+
 alter table "directus"."help_requests" add column if not exists type_id uuid null;
 update "directus"."help_requests" hr set type_id = (
     select ft.id

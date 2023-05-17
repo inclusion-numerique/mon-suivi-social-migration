@@ -43,7 +43,6 @@ orientation_organisation,orientation_structure
 CAST(orientation_type_enum AS "BeneficiaryOrientationType"),orientation_type
 partner_main_income_amount,partner_main_income_amount
 ARRAY(SELECT CAST(json_array_elements_text(partner_main_income_type_enum) AS "IncomeSource")),partner_main_income_source
-ARRAY(SELECT json_array_elements_text(pension_organisations)),pension_organisations
 phone_1,phone1
 phone_2,phone2
 pole_emploi,unemployment_number
@@ -66,5 +65,6 @@ ministere_departement_service_ac,ministere_departement_service_ac
 ministere_structure,ministere_structure
 structure_id,structure_id
 numero_pegase,numero_pegase
-CAST(accommodation_zone_enum AS "BeneficiaryAccomodationZone"),accommodation_zone
+CAST(accommodation_zone_enum AS "BeneficiaryAccommodationZone"),accommodation_zone
 other_pension_organisations,other_pension_organisations
+ARRAY(SELECT CAST (json_array_elements_text(array_to_json(pension_organisations_enum)::json) AS "BeneficiaryPensionOrganisation")),pension_organisations

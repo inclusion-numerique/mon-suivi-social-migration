@@ -1,0 +1,15 @@
+relatives,beneficiary_relative
+id,id
+date_created,created
+date_updated,updated
+relative_beneficiary,beneficiary_id
+lastname,last_name
+firstname,first_name
+CASt(type_enum AS "RelativeRelationship"),relationship
+city,city
+email,email
+phone,phone
+hosted,hosted
+caregiver,caregiver
+beneficiary,beneficiary_link_id
+additional_information,additional_information

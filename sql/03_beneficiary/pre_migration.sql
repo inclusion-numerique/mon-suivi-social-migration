@@ -102,6 +102,7 @@ update "directus"."beneficiary" set "main_income_type_enum" = json(replace("main
 update "directus"."beneficiary" set "main_income_type_enum" = json(replace("main_income_type_enum"::text, 'aah', 'Aah'));
 update "directus"."beneficiary" set "main_income_type_enum" = json(replace("main_income_type_enum"::text, 'apl', 'Apl'));
 update "directus"."beneficiary" set "main_income_type_enum" = json(replace("main_income_type_enum"::text, 'other', 'Autre'));
+update "directus"."beneficiary" set "main_income_type_enum" = json(replace("main_income_type_enum"::text, 'child_support', 'PensionAlimentaire'));
 
 ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS major_children_main_income_type_enum json NULL;
 update "directus"."beneficiary" set major_children_main_income_type_enum = major_children_main_income_type;
@@ -118,6 +119,7 @@ update "directus"."beneficiary" set major_children_main_income_type_enum = json(
 update "directus"."beneficiary" set major_children_main_income_type_enum = json(replace(major_children_main_income_type_enum::text, 'aah', 'Aah'));
 update "directus"."beneficiary" set major_children_main_income_type_enum = json(replace(major_children_main_income_type_enum::text, 'apl', 'Apl'));
 update "directus"."beneficiary" set major_children_main_income_type_enum = json(replace(major_children_main_income_type_enum::text, 'other', 'Autre'));
+update "directus"."beneficiary" set major_children_main_income_type_enum = json(replace(major_children_main_income_type_enum::text, 'child_support', 'PensionAlimentaire'));
 
 ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS partner_main_income_type_enum json NULL;
 update "directus"."beneficiary" set partner_main_income_type_enum = partner_main_income_type;
@@ -134,6 +136,7 @@ update "directus"."beneficiary" set partner_main_income_type_enum = json(replace
 update "directus"."beneficiary" set partner_main_income_type_enum = json(replace(partner_main_income_type_enum::text, 'aah', 'Aah'));
 update "directus"."beneficiary" set partner_main_income_type_enum = json(replace(partner_main_income_type_enum::text, 'apl', 'Apl'));
 update "directus"."beneficiary" set partner_main_income_type_enum = json(replace(partner_main_income_type_enum::text, 'other', 'Autre'));
+update "directus"."beneficiary" set partner_main_income_type_enum = json(replace(partner_main_income_type_enum::text, 'child_support', 'PensionAlimentaire'));
 
 ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS "structure_id" uuid NULL;
 update "directus"."beneficiary" b set "structure_id" = (
@@ -155,3 +158,38 @@ update "directus"."beneficiary" set accommodation_zone_enum = 'OutsideEurope' wh
 update "directus"."beneficiary" set aidant_connect_authorisation = false where aidant_connect_authorisation is NULL;
 update "directus"."beneficiary" set no_phone = false where no_phone is NULL;
 update "directus"."beneficiary" set caregiver = false where caregiver is NULL;
+
+ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS pension_organisations_enum text[] NULL;
+ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS other_pension_organisations text NULL;
+
+CREATE TABLE temp as SELECT id, pension_organisation, pension_organisation as other_pension_organisation FROM
+  (SELECT id, JSON_ARRAY_ELEMENTS_TEXT(pension_organisations) as pension_organisation FROM directus.beneficiary) AS foo;
+
+update temp set other_pension_organisation = null where other_pension_organisation in ('agirc-arrco','ag2r','cnav-carsat','cipav','cnracl','edf','ircantec','klesia','sre','ssi','malakoff_humanis','msa','pro_btp','retraite_des_mines','other');
+update temp set pension_organisation = null where other_pension_organisation is not null;
+update temp set pension_organisation = 'AgircArrco' where pension_organisation = 'agirc-arrco';
+update temp set pension_organisation = 'Agr' where pension_organisation = 'ag2r';
+update temp set pension_organisation = 'CnavCarsat' where pension_organisation = 'cnav-carsat';
+update temp set pension_organisation = 'Cipav' where pension_organisation = 'cipav';
+update temp set pension_organisation = 'Cnracl' where pension_organisation = 'cnracl';
+update temp set pension_organisation = 'Edf' where pension_organisation = 'edf';
+update temp set pension_organisation = 'Ircantec' where pension_organisation = 'ircantec';
+update temp set pension_organisation = 'Klesia' where pension_organisation = 'klesia';
+update temp set pension_organisation = 'Sre' where pension_organisation = 'sre';
+update temp set pension_organisation = 'Ssi' where pension_organisation = 'ssi';
+update temp set pension_organisation = 'MalakoffHumanis' where pension_organisation = 'malakoff_humanis';
+update temp set pension_organisation = 'Msa' where pension_organisation = 'msa';
+update temp set pension_organisation = 'ProBtp' where pension_organisation = 'pro_btp';
+update temp set pension_organisation = 'RetraiteDesMines' where pension_organisation = 'retraite_des_mines';
+update temp set pension_organisation = 'Other' where pension_organisation = 'other';
+
+CREATE TABLE temp2 as SELECT id, CAST (CONCAT('{', string_agg(pension_organisation, ', '), '}') AS text[]) pension_organisations, string_agg(other_pension_organisation, ', ') other_pension_organisations FROM temp GROUP BY id;
+update temp2 set pension_organisations = null where pension_organisations = '{}';
+
+update directus.beneficiary b set pension_organisations_enum = (select pension_organisations from temp2 t where t.id = b.id);
+update directus.beneficiary b set other_pension_organisations = (select other_pension_organisations from temp2 t where t.id = b.id);
+
+DROP TABLE temp;
+DROP TABLE temp2;
+
+delete from directus.beneficiary where structure_id is null;
