@@ -7,4 +7,5 @@ filesize,size
 id::text,key
 type,mime_type
 uploaded_by,created_by_id
-uploaded_on,created
+uploaded_on,created,
+labels,tags
