@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { buildDatabaseUrl, execSqlFile, execPsql } from '../help/commands.mjs';
+import { buildDatabaseUrl, execSqlFile } from '../help/commands.mjs';
 import { generateMigration } from '../help/generateSqlScripts.mjs';
 
 dotenv.config();
@@ -32,7 +32,6 @@ export async function migrate() {
 
 async function migrateFile(path) {
   generateMigration(path);
-  await execPsql(databaseUrlDestMonsuivisocialDb, `TRUNCATE "${path.substring(3)}" CASCADE`)
   await execSqlFile(
     databaseUrlDestMonsuivisocialDb,
     `./sql/${path}/pre_migration.sql`
