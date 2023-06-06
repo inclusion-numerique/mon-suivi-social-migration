@@ -2,6 +2,8 @@ relatives,beneficiary_relative
 id,id
 date_created,created
 date_updated,updated
+user_created,created_by_id
+user_updated,updated_by_id
 relative_beneficiary,beneficiary_id
 lastname,last_name
 firstname,first_name

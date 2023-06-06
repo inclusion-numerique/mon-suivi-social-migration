@@ -11,4 +11,5 @@ CAST(type_enum AS "StructureType"),type
 zip_code,zipcode
 inhabitants_number,inhabitants_number
 insee_code,insee_code
+user_updated,updated_by_id
 siret,siret

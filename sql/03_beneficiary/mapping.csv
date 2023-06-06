@@ -58,6 +58,7 @@ street,street
 street_number,street_number
 CAST(title_enum AS "BeneficiaryTitle"),title
 user_created,created_by_id
+user_updated,updated_by_id
 usual_name,usual_name
 zip_code,zipcode
 ministere_categorie,ministere_categorie
