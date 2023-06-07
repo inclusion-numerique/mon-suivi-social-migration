@@ -32,3 +32,13 @@ appliquer les fichiers de migration
 ```sh
 npm run migrate
 ```
+
+## util
+
+```sh
+pg_dump postgresql://mss:password@localhost:5433/mss --data-only -n public -Fc > ./dumps/migrated.dump
+```
+
+```sh
+pg_restore -d "postgresql://user:password@localhost:5435/db?sslmode=require" -e -Fc --no-owner -n public ./dumps/migrated.dump
+```

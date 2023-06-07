@@ -1,3 +1,5 @@
 dumps
 .env
+.env.production
+.env.developement
 node_modules
