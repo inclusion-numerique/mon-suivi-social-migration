@@ -8,4 +8,5 @@ id::text,key
 type,mime_type
 uploaded_by,created_by_id
 uploaded_on,created
-ARRAY(SELECT json_array_elements_text(labels)),tags
+ARRAY(SELECT json_array_elements_text(labels)),tags,
+filename_disk,filename_disk
