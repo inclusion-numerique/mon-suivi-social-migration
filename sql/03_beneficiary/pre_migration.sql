@@ -203,6 +203,13 @@ update "directus"."beneficiary" set "ministere_structure_enum" = 'Mnc' where "mi
 update "directus"."beneficiary" set "ministere_structure_enum" = 'Retraites' where "ministere_structure" = 'retraites';
 update "directus"."beneficiary" set "ministere_structure_enum" = 'Other' where "ministere_structure" = 'other';
 
+ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS ministere_categorie_enum text NULL;
+update "directus"."beneficiary" set "ministere_structure_enum" = 'CategorieA' where "ministere_structure" = 'categorie_a';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'CategorieB' where "ministere_structure" = 'categorie_b';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'CategorieC' where "ministere_structure" = 'categorie_c';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'CadreDroitPrive' where "ministere_structure" = 'cadre_droit_prive';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'NonCadreDroitPrive' where "ministere_structure" = 'non_cadre_droit_prive';
+
 DROP TABLE temp;
 DROP TABLE temp2;
 
