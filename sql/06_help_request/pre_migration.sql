@@ -63,3 +63,5 @@ update "directus"."help_requests" set "ministre_enum" = 'JeanChristopheCombe' wh
 update "directus"."help_requests" set "ministre_enum" = 'GenevieveDarrieussecq' where "ministre" = 'darrieussecq';
 update "directus"."help_requests" set "ministre_enum" = 'OlivierDussopt' where "ministre" = 'dussopt';
 update "directus"."help_requests" set "ministre_enum" = 'CaroleGrandjean' where "ministre" = 'grandjean';
+
+update "directus"."help_requests" set external_structure = false where external_structure is NULL;
