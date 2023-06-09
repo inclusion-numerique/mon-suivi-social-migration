@@ -6,7 +6,6 @@ date_created,created
 date_updated,updated
 decision_date,decision_date
 dispatch_date,dispatch_date
-examining_organisation,examining_organisation
 type_id,type_id
 handling_date,handling_date
 id,id
