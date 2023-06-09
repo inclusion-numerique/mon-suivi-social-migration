@@ -189,6 +189,20 @@ update temp2 set pension_organisations = null where pension_organisations = '{}'
 update directus.beneficiary b set pension_organisations_enum = (select pension_organisations from temp2 t where t.id = b.id);
 update directus.beneficiary b set other_pension_organisations = (select other_pension_organisations from temp2 t where t.id = b.id);
 
+ALTER TABLE "directus"."beneficiary" ADD COLUMN IF NOT EXISTS ministere_structure_enum text NULL;
+update "directus"."beneficiary" set "ministere_structure_enum" = 'AdministrationCentrale' where "ministere_structure" = 'administration_centrale';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'Ars' where "ministere_structure" = 'ars';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'DreetsDeetsOutreMer' where "ministere_structure" = 'dreets_deets_outre_mer';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'Ddets' where "ministere_structure" = 'ddets';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'Ddetspp' where "ministere_structure" = 'ddetspp';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'Ddpp' where "ministere_structure" = 'ddpp';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'InjaInjs' where "ministere_structure" = 'inja_injs';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'Ehesp' where "ministere_structure" = 'ehesp';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'Intefp' where "ministere_structure" = 'intefp';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'Mnc' where "ministere_structure" = 'mnc';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'Retraites' where "ministere_structure" = 'retraites';
+update "directus"."beneficiary" set "ministere_structure_enum" = 'Other' where "ministere_structure" = 'other';
+
 DROP TABLE temp;
 DROP TABLE temp2;
 
