@@ -61,7 +61,7 @@ user_created,created_by_id
 usual_name,usual_name
 zip_code,zipcode
 CAST(ministere_categorie_enum AS "BeneficiaryMinistereCategorie"),ministere_categorie
-CAST(ministere_departement_service_ac as "BeneficiaryMinistereDepartementServiceAc"),ministere_departement_service_ac
+CAST(ministere_departement_service_ac_enum as "BeneficiaryMinistereDepartementServiceAc"),ministere_departement_service_ac
 CAST(ministere_structure_enum AS "BeneficiaryMinistereStructure"),ministere_structure
 structure_id,structure_id
 numero_pegase,numero_pegase
