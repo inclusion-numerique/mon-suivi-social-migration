@@ -10,3 +10,4 @@ uploaded_by,created_by_id
 uploaded_on,created
 ARRAY(SELECT json_array_elements_text(labels)),tags,
 filename_disk,filename_disk
+filename_download,filename_download
