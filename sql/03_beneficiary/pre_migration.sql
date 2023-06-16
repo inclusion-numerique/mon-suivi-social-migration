@@ -342,6 +342,10 @@ update "directus"."beneficiary" set "ministere_departement_service_ac_enum" = 'I
 update "directus"."beneficiary" set "ministere_departement_service_ac_enum" = 'SecretariatAuxPersonnesHandicapees' where "ministere_departement_service_ac" = 'secretariat_aux_personnes_handicapees';
 update "directus"."beneficiary" set "ministere_departement_service_ac_enum" = 'Sgmcas' where "ministere_departement_service_ac" = 'sgmcas';
 
+update "directus"."beneficiary" set "usual_name" = upper("usual_name");
+update "directus"."beneficiary" set "birth_name" = upper("birth_name");
+update "directus"."beneficiary" set "first_name" = concat(upper(substring("first_name" for 1)), substring("first_name" from 2));
+
 DROP TABLE temp;
 DROP TABLE temp2;
 
