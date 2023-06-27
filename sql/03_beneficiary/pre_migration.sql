@@ -344,7 +344,7 @@ update "directus"."beneficiary" set "ministere_departement_service_ac_enum" = 'S
 
 update "directus"."beneficiary" set "usual_name" = upper("usual_name");
 update "directus"."beneficiary" set "birth_name" = upper("birth_name");
-update "directus"."beneficiary" set "first_name" = concat(upper(substring("first_name" for 1)), substring("first_name" from 2));
+update "directus"."beneficiary" set "firstname" = concat(upper(substring("firstname" for 1)), substring("firstname" from 2));
 
 DROP TABLE temp;
 DROP TABLE temp2;
