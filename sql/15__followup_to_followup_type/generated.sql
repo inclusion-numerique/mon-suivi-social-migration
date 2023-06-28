@@ -1,0 +1,1 @@
+INSERT INTO "public"."_followup_to_followup_type" ("A", "B") SELECT follow_ups_id, B FROM "directus"."follow_ups_follow_up_types";

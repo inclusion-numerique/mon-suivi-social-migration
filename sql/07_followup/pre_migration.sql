@@ -57,5 +57,3 @@ update "directus"."follow_ups" set "ministre_enum" = 'JeanChristopheCombe' where
 update "directus"."follow_ups" set "ministre_enum" = 'GenevieveDarrieussecq' where "ministre" = 'darrieussecq';
 update "directus"."follow_ups" set "ministre_enum" = 'OlivierDussopt' where "ministre" = 'dussopt';
 update "directus"."follow_ups" set "ministre_enum" = 'CaroleGrandjean' where "ministre" = 'grandjean';
-
-
