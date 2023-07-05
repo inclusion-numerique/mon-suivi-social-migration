@@ -1,0 +1,7 @@
+directus_activity,user_activity
+gen_random_uuid(),id
+CAST("action" AS "UserActivityType"),activity
+"user",user_id
+"timestamp","date"
+CAST("collection" AS "UserActivityObject"),"object"
+"item",object_id

@@ -1,0 +1,1 @@
+INSERT INTO "public"."user_activity" (id, activity, user_id, "date", "object", object_id) SELECT gen_random_uuid(), CAST("action" AS "UserActivityType"), "user", "timestamp", CAST("collection" AS "UserActivityObject"), "item" FROM "directus"."directus_activity";

@@ -5,12 +5,13 @@
   "license": "AGPL-3.0-or-later",
   "private": true,
   "engines": {
-    "node": "^18.13"
+    "node": "^18.12"
   },
   "packageManager": "pnpm@7.25.1",
   "main": "index.mjs",
   "scripts": {
-    "start": "node index.mjs"
+    "start": "node index.mjs",
+    "dump:migrated-db": "pg_dump postgresql://mss:password@localhost:5433/mss --data-only -n public -Fc > ./dumps/migrated.dump"  
   },
   "dependencies": {
     "dotenv": "^16.0.3"

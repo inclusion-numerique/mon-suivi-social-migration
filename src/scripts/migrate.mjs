@@ -29,6 +29,7 @@ export async function migrate() {
   await migrateFile('13_notification');
   await migrateFile('14_beneficiary_relative');
   await migrateFile('15__followup_to_followup_type');
+  await migrateFile('16_user_activity');
 }
 
 async function migrateFile(path) {

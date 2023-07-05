@@ -34,3 +34,5 @@ update directus.notifications n set followup_id = (
 update directus.notifications n set "beneficiary_id" = (select "beneficiary_id" from help_request i where i.id = n.help_request_id) where help_request_id is not null;
 update directus.notifications n set "beneficiary_id" = (select "beneficiary_id" from followup i where i.id = n.followup_id) where followup_id is not null;
 update directus.notifications n set "beneficiary_id" = (select "beneficiary_id" from document i where i.key = n.document_id) where document_id is not null;
+
+delete from directus.notifications where beneficiary_id is null;
