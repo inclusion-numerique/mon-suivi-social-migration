@@ -24,6 +24,8 @@ delete from directus.directus_activity where "collection" = 'organismes_instruct
 delete from directus.directus_activity where "collection" = 'directus_flows';
 delete from directus.directus_activity where "collection" = 'relatives';
 delete from directus.directus_activity where "collection" = 'organismes_prescripteurs';
+delete from directus.directus_activity where "collection" = 'directus_permissions';
+delete from directus.directus_activity where "collection" = 'directus_folders';
 
 UPDATE directus.directus_activity set "action" = 'LOGIN' where "action" = 'login';
 UPDATE directus.directus_activity set "action" = 'DELETE' where "action" = 'delete';
